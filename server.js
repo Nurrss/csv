@@ -93,4 +93,27 @@ app.post("/update-line", (req, res) => {
   });
 });
 
+function createHtmlFile(filename, content) {
+  fs.writeFile(filename, content, (err) => {
+    if (err) {
+      console.error("Error writing file:", err);
+    } else {
+      console.log("File created successfully");
+    }
+  });
+}
+
+const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    <h1>This is a Heading</h1>
+    <p>This is a paragraph.</p>
+</body>
+</html>`;
+
+createHtmlFile("example.html", htmlContent);
+
 app.listen(3000, () => console.log("Server running on port 3000"));
